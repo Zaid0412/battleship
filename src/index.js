@@ -1,17 +1,10 @@
 import "./style.css";
 
-class Ship {
-  constructor(length) {
-    this.length = length;
-    this.hits = 0;
-    this.sunken = false;
-  }
+import { Gameboard } from "./Gameboard";
+import { Player } from "./Players";
 
-  hit = () => {
-    this.hits++;
-  };
+const player1 = new Player(new Gameboard());
 
-  isSunk = () => {
-    return this.hits == this.length ? true : false;
-  };
-}
+console.log(player1.Gameboard.initGame());
+
+player1.Gameboard.receiveAttack(4, 5);
