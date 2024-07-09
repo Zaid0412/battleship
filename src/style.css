@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+
+:root {
+  --primary-clr: #ddd;
+  --grey: #7a7a7b;
+}
+
+* {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: var(--primary-clr);
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Gameboards */
+
+.game-boards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 150px;
+  margin: 75px;
+}
+
+.board {
+  width: 500px;
+  height: 500;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.board-square {
+  background-color: rgb(174, 202, 228, 0.445);
+}
+
+.comp-board .board-square {
+  background-color: rgb(255, 0, 0, 0.137);
+  transition: 200ms;
+}
+
+.comp-board .board-square:hover {
+  filter: invert(0.4);
+}
+
+.square {
+  box-sizing: border-box;
+  width: 45.45454545px;
+  height: 45.45454545px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1.5px solid var(--primary-clr);
+  border-radius: 5px;
+}
+
+.x-coord,
+.y-coord {
+  font-size: 1.19rem;
+  font-weight: 700;
+  color: var(--grey);
+}
+
+/* Buttons */
+
+.btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 500px;
+}
+
+.button {
+  width: 200.8px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  gap: 15px;
+  background-color: #007acc;
+  outline: 3px #007acc solid;
+  outline-offset: -3px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: 400ms;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.button .text {
+  color: white;
+  font-weight: 700;
+  font-size: 1em;
+  transition: 400ms;
+}
+
+.button:hover {
+  background-color: transparent;
+}
+
+.button:hover .text {
+  color: #007acc;
+}
