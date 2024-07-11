@@ -7,9 +7,13 @@ export class Ship {
 
   hit = () => {
     this.hits++;
+    this.isSunk();
   };
 
   isSunk = () => {
-    return this.hits == this.length ? true : false;
+    if (this.hits >= this.length) {
+      this.sunken = true;
+      return true;
+    }
   };
 }
