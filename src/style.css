@@ -24,6 +24,10 @@ header {
 
 /* Gameboards */
 
+.ship {
+  background-color: green;
+}
+
 .game-boards {
   display: flex;
   justify-content: center;
@@ -48,6 +52,7 @@ header {
 .comp-board .board-square {
   background-color: rgb(255, 0, 0, 0.137);
   transition: 200ms;
+  cursor: pointer;
 }
 
 .comp-board .board-square:hover {
@@ -112,4 +117,25 @@ header {
 
 .button:hover .text {
   color: #007acc;
+}
+
+.button:active {
+  transform: scale(0.95);
+}
+
+.disabled-btn {
+  background-color: var(--grey);
+  outline: 3px solid var(--primary-clr);
+  cursor: not-allowed;
+}
+
+.button.disabled-btn:active,
+.button.disabled-btn:hover {
+  transform: scale(1);
+  background-color: var(--grey);
+  outline: 3px solid var(--primary-clr);
+}
+
+.button.disabled-btn:hover .text {
+  color: var(--primary-clr);
 }
