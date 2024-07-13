@@ -7,12 +7,47 @@
   </head>
   <body>
     <header>
-      <h1>Battleship</h1>
+        <button class="button change-name-btn">
+          </svg>
+        <p class="text">Change Player Name</p>
+      </button>
+      <h1 id="heading">Battleship</h1>
+      <div >
+        <label class="ui-switch">
+          <input type="checkbox" class="change-theme-btn">
+          <div class="slider">
+            <div class="circle"></div>
+          </div>
+        </label>
+        
+      </div>
     </header>
+
+    <dialog class="change-name-modal">
+      <form action="" method="dialog">
+        <div class="one">
+          <label for="player-one">Player Name:</label>
+          <input
+            type="text"
+            name="player-name"
+            value="Player"
+            id="player-name"
+          />
+        </div>
+
+        <button class="button submit-name-btn">
+        </svg>
+      <p class="text">Change Name</p>
+    </button>
+      </form>
+    </dialog>
+
 
     <div class="game-boards">        
       
       <div class="player-board board">
+        <div class="white-space"></div>
+        <div class="name-headers player-name-tag">Player</div>
         <div class="x-coord square"></div>
         <div class="x-coord square">A</div>
         <div class="x-coord square">B</div>
@@ -137,6 +172,8 @@
       </div>
 
       <div class="comp-board board"> 
+        <div class="white-space"></div>
+        <div class="name-headers">Opponent</div>
       <div class="x-coord square"></div>
       <div class="x-coord square">A</div>
       <div class="x-coord square">B</div>
