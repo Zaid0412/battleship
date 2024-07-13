@@ -3,11 +3,21 @@ import "./style.css";
 import { Gameboard } from "./Gameboard";
 import { Player } from "./Players";
 
+const body = document.querySelector("body");
+
 const newFleetBtn = document.querySelector(".random-fleet-btn");
 const startGameBtn = document.querySelector(".start-game-btn");
+const changeNameBtn = document.querySelector(".change-name-btn");
+const changeThemeBtn = document.querySelector(".change-theme-btn");
+const submitNameBtn = document.querySelector(".submit-name-btn");
+
+const changeNameModal = document.querySelector(".change-name-modal");
+const newNameInput = document.querySelector("#player-name");
 
 const compBoard = document.querySelectorAll(".comp-board .board-square");
 const playerBoard = document.querySelectorAll(".player-board .board-square");
+
+const playerNameTag = document.querySelector(".player-name-tag");
 
 const player1 = new Player(new Gameboard());
 player1.Gameboard.initGame();
@@ -22,6 +32,30 @@ const displayWinner = (hasLost, winner) => {
     console.log(`${winner.name} Wins!`);
     gameStarted = false;
   }
+};
+
+const startGame = () => {
+  gameStarted = true;
+
+  newFleetBtn.disabled = true;
+  newFleetBtn.classList.add("disabled-btn");
+
+  startGameBtn.disabled = true;
+  startGameBtn.classList.add("disabled-btn");
+};
+
+const changeTheme = () => {
+  body.classList.toggle("dark");
+  console.log("a");
+};
+
+const openNameModal = () => {
+  changeNameModal.showModal();
+};
+
+const changeName = (name = "Player") => {
+  player1.name = name;
+  playerNameTag.textContent = name;
 };
 
 const compTurn = () => {
@@ -41,10 +75,9 @@ const compTurn = () => {
   }
   if (
     hitSquare.style.backgroundColor == "#6C6C71" ||
-    hitSquare.style.backgroundColor == "red"
+    hitSquare.classList.contains("hit")
   ) {
     // Checking if hitSquare was already hit
-    console.log("a");
     return compTurn(); // If yes, run compTurn()
   } else if (
     typeof player1.Gameboard.board[randomYCoord - 1][randomXCoord - 1] ==
@@ -53,7 +86,7 @@ const compTurn = () => {
     // Else, if the clicked square is a ship
     player1.Gameboard.board[randomYCoord - 1][randomXCoord - 1].hit(); // Call hit() to the ship
     console.log(randomXCoord - 1, randomYCoord - 1);
-    hitSquare.style.backgroundColor = "red";
+    hitSquare.classList.add("hit");
   } else if (
     compPlayer.Gameboard.board[randomYCoord - 1][randomXCoord - 1] == "-"
   ) {
@@ -72,7 +105,7 @@ for (const compSquare of compBoard) {
 
       if (typeof compPlayer.Gameboard.board[y][x] == "object") {
         compPlayer.Gameboard.board[y][x].hit();
-        compSquare.style.backgroundColor = "red";
+        compSquare.classList.add("hit");
       } else if (compPlayer.Gameboard.board[y][x] == "-") {
         compSquare.style.backgroundColor = "#6C6C71";
       }
@@ -85,12 +118,13 @@ for (const compSquare of compBoard) {
 }
 newFleetBtn.addEventListener("click", player1.Gameboard.initGame);
 
-startGameBtn.addEventListener("click", () => {
-  gameStarted = true;
+startGameBtn.addEventListener("click", startGame);
 
-  newFleetBtn.disabled = true;
-  newFleetBtn.classList.add("disabled-btn");
+changeThemeBtn.addEventListener("click", changeTheme);
 
-  startGameBtn.disabled = true;
-  startGameBtn.classList.add("disabled-btn");
+changeNameBtn.addEventListener("click", openNameModal);
+
+submitNameBtn.addEventListener("click", () => {
+  changeName(newNameInput.value);
+  newNameInput.value = "";
 });
