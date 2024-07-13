@@ -63,7 +63,8 @@ export class Gameboard {
 
   resetBoard = () => {
     for (const square of playerSquares) {
-      square.style.backgroundColor = "rgb(174, 202, 228, 0.445)";
+      square.classList.remove("ship");
+      square.classList.remove("hit");
     }
     this.board = [
       ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-"],
@@ -106,7 +107,7 @@ export class Gameboard {
 
           for (const square of playerSquares) {
             if (square.dataset.x == xCoord && square.dataset.y == yCoord) {
-              square.style.backgroundColor = "green";
+              square.classList.add("ship");
             }
           }
         }
