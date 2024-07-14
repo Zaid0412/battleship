@@ -46,7 +46,6 @@ const startGame = () => {
 
 const changeTheme = () => {
   body.classList.toggle("dark");
-  console.log("a");
 };
 
 const openNameModal = () => {
@@ -85,7 +84,6 @@ const compTurn = () => {
   ) {
     // Else, if the clicked square is a ship
     player1.Gameboard.board[randomYCoord - 1][randomXCoord - 1].hit(); // Call hit() to the ship
-    console.log(randomXCoord - 1, randomYCoord - 1);
     hitSquare.classList.add("hit");
   } else if (
     compPlayer.Gameboard.board[randomYCoord - 1][randomXCoord - 1] == "-"
@@ -94,7 +92,6 @@ const compTurn = () => {
   }
 
   displayWinner(compPlayer.Gameboard.isFleetSunk(), player1);
-  console.log(compPlayer.Gameboard.fleet.every((ship) => ship.sunken));
 };
 
 for (const compSquare of compBoard) {
@@ -113,7 +110,6 @@ for (const compSquare of compBoard) {
       compTurn();
     }
     displayWinner(player1.Gameboard.isFleetSunk(), compPlayer);
-    console.log(player1.Gameboard.fleet.every((ship) => ship.sunken));
   });
 }
 newFleetBtn.addEventListener("click", player1.Gameboard.initGame);
