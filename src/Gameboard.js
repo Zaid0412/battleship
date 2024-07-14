@@ -82,7 +82,7 @@ export class Gameboard {
 
   isFleetSunk = () => {
     // Checking is all of the ships are sunken
-    return this.fleet.every((ship) => ship.sunken);
+    return this.fleet.every((ship) => ship.isSunk());
   };
 
   receiveAttack = (x, y) => {
