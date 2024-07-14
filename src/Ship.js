@@ -14,6 +14,6 @@ export class Ship {
     if (this.hits >= this.length) {
       this.sunken = true;
       return true;
-    }
+    } else return false;
   };
 }
